@@ -1,0 +1,5 @@
+# prevent uploading notion_token
+notion_py/configs/configs.py
+# prevent uploading dump module files
+notion_py/configs/__pycache__/
+notion_py/__pycache__/
