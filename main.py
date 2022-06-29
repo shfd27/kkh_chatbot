@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from notion_py import registeraton
+from notion_py import registration, attend
 
 
 app = Flask(__name__)
@@ -28,15 +28,18 @@ def project():
                     project = req["action"]["params"]["study"]
                 except:
                     project = req["action"]["params"]["project"]
-                registeraton.make_page(project)
-                return jsonify(send(project))
+                state = registration.make_page(project)
+                print("state:", state)
+                return jsonify(send(project))    # response does not send because of notion processing time
             if "출석" == req["action"]["params"]["command"]:
                 try:
                     project = req["action"]["params"]["study"]
                 except:
                     project = req["action"]["params"]["project"]
                 name = req["userRequest"]["utterance"].split(" ")[-1]
-                print(name)
+                state = attend.attend(project, name)
+                print("state:", state)
+                return jsonify(send(project))    # response does not send because of notion processing time
 
 def send(res):
     return {
