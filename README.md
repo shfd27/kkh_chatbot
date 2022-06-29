@@ -29,7 +29,6 @@ Solved by [this](https://stackoverflow.com/questions/66513210/cant-get-page-titl
 #### 6/30
 **Error**  
 page.children does not work.  
-`asdf`  
 **Fix**  
 Delete line 198 in `block.py`.  
 `#self._client.refresh_records(block=children_ids)`  
